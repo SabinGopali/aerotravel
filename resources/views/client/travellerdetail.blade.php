@@ -117,7 +117,7 @@
     </script>
 <div class="travellerdetail">
 <div class="haunted-container">
-    <form method="POST" action="{{ route('client.travellerdetails.tstore') }}">
+    <form method="POST" action="{{ route('client.travellerdetails.tstore', $travellerDetailId) }}">
         @csrf
         <input type="hidden" name="traveller_detail" value=" {{ $travellerDetailId }}">
         <h3 class="cursed-heading">TRAVELLERS DETAILS</h3>

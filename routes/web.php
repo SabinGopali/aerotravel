@@ -35,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/feedbackDetailsStore', [ClientControlller::class, 'store'])->name('client.feedbackDetails.store');
     Route::get('/tripplan/{id}', [ClientControlller::class, 'tripplandetails'])->name('client.tripplandetails');
     Route::get('/travellerdetail/{id}', [ClientControlller::class, 'travellerdetails'])->name('client.travellerdetails');
-    Route::post('/travellerdetailtstore', [ClientControlller::class, 'tstore'])->name('client.travellerdetails.tstore');
+    Route::post('/travellerdetailtstore/{id}', [ClientControlller::class, 'tstore'])->name('client.travellerdetails.tstore');
     Route::get('/payment', [ClientControlller::class, 'paymentDetails'])->name('client.paymentDetails');
     Route::get('/boardingpass/{id}', [ClientControlller::class, 'boardingpass'])->name('client.boardingpass');    
     Route::get('/travellerboardingpass', [ClientControlller::class, 'travellerboardingpass'])->name('client.travellerboardingpass');    
@@ -108,18 +108,21 @@ Route::put('/travellerdetails/{id}', [TravellerDetailsController::class, 'update
 // Route::get('/travellerdetails-show/{id}', [TravellerDetailsController::class, 'show'])->name('admin.travellerdetails.show');
 Route::get('/travellerdetails-delete/{id}', [TravellerDetailsController::class, 'destroy'])->name('admin.travellerdetails.destroy');
 
-Route::controller(StripePaymentController::class)->group(function(){
-    Route::get('stripe', 'stripe')->name('client.stripe');
-    Route::post('stripe', 'stripePost')->name('stripe.post'); 
+// Route::controller(StripePaymentController::class)->group(function(){
+//     Route::get('stripe', 'stripe')->name('client.stripe');
+//     Route::post('stripe', 'stripePost')->name('stripe.post'); 
+// });
+
+// Route::controller(StripeTravellerController::class)->group(function(){
+//     Route::get('stripetraveller', 'stripe')->name('client.stripetraveller');
+//     Route::post('stripetraveller', 'stripePost')->name('stripetraveller.post'); 
+// });
+
+
+Route::group(['prefix' => '/stripetraveller'], function () {
+    Route::get('/stripe/{id}', [StripeTravellerController::class, 'stripe'])->name('client.stripetraveller');
+    Route::post('/stripePost', [StripeTravellerController::class, 'stripePost'])->name('stripetraveller.post');
 });
-
-Route::controller(StripeTravellerController::class)->group(function(){
-    Route::get('stripetraveller', 'stripe')->name('client.stripetraveller');
-    Route::post('stripetraveller', 'stripePost')->name('stripetraveller.post'); 
-});
-
-
-
 
 
 Auth::routes();

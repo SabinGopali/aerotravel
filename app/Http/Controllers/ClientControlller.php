@@ -111,7 +111,7 @@ class ClientControlller extends Controller
         $tdetail->npassengers = $request->npassengers;
         $saved = $tdetail->save();
         if($saved){
-            return redirect()->route('client.stripetraveller')->with('message', 'category successfully added');
+            return redirect()->route('client.stripetraveller', $request->traveller_detail ?? 0)->with('message', 'category successfully added');
         }
         else{
             return redirect()->back()->with('message', 'category could not be add');

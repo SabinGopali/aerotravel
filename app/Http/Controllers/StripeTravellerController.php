@@ -10,10 +10,13 @@ use Stripe;
 
 class StripeTravellerController extends Controller
 {
-    public function stripe()
+    public function stripe($id)
     {
+        $trip_plan_id = $id;
+        if($id > 0){
+            return view('client.stripetraveller',compact('trip_plan_id'));
+        }
         // $passenger = PassengerDetails::all();
-        return view('client.stripetraveller');
     }
     
     /**
@@ -39,8 +42,11 @@ class StripeTravellerController extends Controller
     public function stripePost(Request $request)
     {
         // Get traveller details and number of passengers from respective tables
-        $tdetail = Tdetail::where('traveller_details_id', $request->traveller_detail)->first();
-        $travellerDetail = TravellerDetails::find($request->traveller_detail);
+        $trip_plan_id = $request->trip_pan_id;
+        $tdetail = Tdetail::where('traveller_details_id', $trip_plan_id)->first();
+        $travellerDetail = TravellerDetails::find($trip_plan_id);
+        // $tdetail = Tdetail::where('traveller_details_id', $request->traveller_detail)->first();
+        // $travellerDetail = TravellerDetails::find($request->traveller_detail);
 
         if (!$tdetail || !$travellerDetail) {
             return back()->with('error', 'Invalid traveller details or no passenger details found.');
@@ -48,19 +54,17 @@ class StripeTravellerController extends Controller
 
         // Retrieve required values
         $npassengers = $tdetail->npassengers;
-        $packageCost = $travellerDetail->package_cost;
+        $packageCost = $travellerDetail->packagecost;
 
         // Calculate the total amount (number of passengers * package cost)
         $totalAmount = $npassengers * $packageCost;
-
         try {
             // Set Stripe secret key
             Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
             // Create the Stripe charge
             Stripe\Charge::create([
-                "amount" => 20 * 100, // Convert to cents
-                // "amount" => $totalAmount * 100, // Convert to cents
+                "amount" => $totalAmount * 100, // Convert to cents
                 "currency" => "usd",
                 "source" => $request->stripeToken,
                 "description" => "Payment for {$npassengers} passengers"
