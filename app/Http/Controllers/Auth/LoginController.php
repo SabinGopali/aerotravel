@@ -70,9 +70,11 @@ class LoginController extends Controller
                 return $response;
             }
             if ($user->role_id == 1) {
-                return view('client.index');
+                // return view('client.index');
+                return redirect()->route('client.index');
             } elseif ($user->role_id == 2) {
-                return view('admin.dashboard');
+                // return view('admin.dashboard');
+                return redirect()->route('admin.dashboard');
             } else {
                 return $request->wantsJson()
                     ? new JsonResponse([], 204)
