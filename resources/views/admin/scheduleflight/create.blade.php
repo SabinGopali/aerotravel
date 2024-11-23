@@ -117,15 +117,25 @@
             <input class="input-box" type="text" id="flight-number" name="flight_number" placeholder="Enter Flight Number" required>
         </div>
 
-        <div class="section-group">
-            <label class="label-text">Flight Has</label>
-            <div class="option-group">
-                <label><input type="checkbox" name="is_economy_class" value="1" checked> Economy Class</label>
-                <label><input type="checkbox" name="is_business_class" value="1" checked> Business Class</label>
+        <div class="form-group">
+            <label for="inputDescription">Choose Flight Class</label>
+            <div class="form-check form-check-success">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="class"
+                        id="optionsRadios1" value="economy" checked="">
+                    Economy
+                    <i class="input-helper"></i></label>
+            </div>
+            <div class="form-check form-check-danger">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="class"
+                        id="optionsRadios2" value="business">
+                    Business
+                    <i class="input-helper"></i></label>
             </div>
         </div>
 
-        <div class="section-group">
+        {{-- <div class="section-group">
             <label class="label-text" for="economy-seats">Number of Economy Class Seats</label>
             <input class="input-number" type="number" name="nos_economy" id="economy-seats" placeholder="Number of Economy Seats" >
         </div>
@@ -133,7 +143,7 @@
         <div class="section-group">
             <label class="label-text" for="business-seats">Number of Business Class Seats</label>
             <input class="input-number" type="number" name="nos_business" id="business-seats" placeholder="Number of Business Seats" >
-        </div>
+        </div> --}}
 
 
         <div class="section-group">
@@ -193,15 +203,15 @@
         </div>
 
         <div class="section-group">
-            <label class="label-text" for="economy-cost">Seat Cost for Economy Class</label>
-            <input class="input-number" type="number" id="economy-cost" name="sc_economy" placeholder="Cost for Economy Class" >
+            <label class="label-text" for="economy-cost">Class Cost</label>
+            <input class="input-number" type="number" id="economy-cost" name="class_cost" placeholder="Seat Cost" >
         </div>
 
 
-        <div class="section-group">
+        {{-- <div class="section-group">
             <label class="label-text" for="business-cost">Seat Cost for Business Class</label>
             <input class="input-number" type="number" id="business-cost" name="sc_business" placeholder="Cost for Business Class" >
-        </div>
+        </div> --}}
 
         <div class="form-actions">
             <button type="submit" class="action-button submit-button">Submit</button>

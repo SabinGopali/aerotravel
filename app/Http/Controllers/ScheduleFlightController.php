@@ -40,16 +40,14 @@ class ScheduleFlightController extends Controller
         $arrivDateTime = \Carbon\Carbon::createFromFormat('Y-m-d\TH:i', $request->input('arriv_date_time'));
         $scheduleflight = new ScheduleFlight();
         $scheduleflight->flight_number = $request->flight_number;
-        $scheduleflight->is_economy_class = $request->has('is_economy_class') ? true : false;
-        $scheduleflight->is_business_class = $request->has('is_business_class') ? true : false;
+        $scheduleflight->class = $request->class;
         $scheduleflight->nos_economy = $request->nos_economy;
         $scheduleflight->nos_business = $request->nos_business;
         $scheduleflight->select_source = $request->select_source;
         $scheduleflight->select_destination = $request->select_destination;
         $scheduleflight->depart_date_time = $departDateTime;
         $scheduleflight->arriv_date_time = $arrivDateTime;
-        $scheduleflight->sc_economy = $request->sc_economy;
-        $scheduleflight->sc_business = $request->sc_business;
+        $scheduleflight->class_cost = $request->class_cost;
         
         $saved = $scheduleflight->save();
         // dd($scheduleflight);
@@ -100,16 +98,14 @@ class ScheduleFlightController extends Controller
         $arrivDateTime = \Carbon\Carbon::createFromFormat('Y-m-d\TH:i', $request->input('arriv_date_time'));
         $scheduleflight = ScheduleFlight::findorfail($id);
         $scheduleflight->flight_number = $request->flight_number;
-        $scheduleflight->is_economy_class = $request->has('is_economy_class') ? true : false;
-        $scheduleflight->is_business_class = $request->has('is_business_class') ? true : false;
+        $scheduleflight->class = $request->class;
         $scheduleflight->nos_economy = $request->nos_economy;
         $scheduleflight->nos_business = $request->nos_business;
         $scheduleflight->select_source = $request->select_source;
         $scheduleflight->select_destination = $request->select_destination;
         $scheduleflight->depart_date_time = $departDateTime;
         $scheduleflight->arriv_date_time = $arrivDateTime;
-        $scheduleflight->sc_economy = $request->sc_economy;
-        $scheduleflight->sc_business = $request->sc_business;
+        $scheduleflight->class_cost = $request->class_cost;
         
         $saved = $scheduleflight->save();
         // dd($scheduleflight);

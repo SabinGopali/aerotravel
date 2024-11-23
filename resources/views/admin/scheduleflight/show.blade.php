@@ -122,25 +122,28 @@
             <input class="input-box" type="text" id="flight-number" readonly name="flight_number" value="{{$scheduleflight->flight_number}}" placeholder="Enter Flight Number" required>
         </div>
 
-        <div class="section-group">
-            <label class="label-text">Flight Has</label>
-            <div class="option-group">
-            <label>
-            <input type="checkbox" name="is_economy_class" value="1" disabled
-                {{ $scheduleflight->is_economy_class == 1 ? 'checked' : '' }}>
-            Economy Class
-        </label>
-        
-        <!-- Checkbox for Business Class -->
-        <label>
-            <input type="checkbox" name="is_business_class" value="1" disabled
-                {{ $scheduleflight->is_business_class == 1 ? 'checked' : '' }}>
-            Business Class
-        </label>
+        <div class="form-group">
+            <label for="inputDescription">Choose Flight Class</label>
+            <div class="form-check form-check-success">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="class"
+                        id="optionsRadios1" value="economy" disabled {{ $scheduleflight->class == 'economy' ? 'checked' : '' }}>
+                    Economy
+                    <i class="input-helper"></i>
+                </label>
+            </div>
+            <div class="form-check form-check-danger">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="class"
+                        id="optionsRadios2" value="business" disabled {{ $scheduleflight->class == 'business' ? 'checked' : '' }}>
+                    Business
+                    <i class="input-helper"></i>
+                </label>
             </div>
         </div>
 
-        <div class="section-group">
+
+        {{-- <div class="section-group">
             <label class="label-text" for="economy-seats">Number of Economy Class Seats</label>
             <input class="input-number" type="number" name="nos_economy" readonly  value="{{$scheduleflight->nos_economy}}" id="economy-seats" placeholder="Number of Economy Seats" required>
         </div>
@@ -148,7 +151,7 @@
         <div class="section-group">
             <label class="label-text" for="business-seats">Number of Business Class Seats</label>
             <input class="input-number" type="number" name="nos_business" readonly  value="{{$scheduleflight->nos_business}}" id="business-seats" placeholder="Number of Business Seats" required>
-        </div>
+        </div> --}}
 
 
         <div class="section-group">
@@ -207,15 +210,15 @@
             <input class="input-date" type="datetime-local" name="arriv_date_time" readonly value="{{$scheduleflight->arriv_date_time}}" id="arrival-time" required>
         </div>
 
-        <div class="section-group">
+        {{-- <div class="section-group">
             <label class="label-text" for="economy-cost">Seat Cost for Economy Class</label>
             <input class="input-number" type="number" id="economy-cost" name="sc_economy" readonly value="{{$scheduleflight->sc_economy}}" placeholder="Cost for Economy Class" required>
-        </div>
+        </div> --}}
 
 
         <div class="section-group">
-            <label class="label-text" for="business-cost">Seat Cost for Business Class</label>
-            <input class="input-number" type="number" id="business-cost" name="sc_business" readonly value="{{$scheduleflight->sc_business}}" placeholder="Cost for Business Class" required>
+            <label class="label-text" for="business-cost">class Cost</label>
+            <input class="input-number" type="number" id="business-cost" name="class_cost" readonly value="{{$scheduleflight->class_cost}}" placeholder="Cost " required>
         </div>
     </form>
 </div>

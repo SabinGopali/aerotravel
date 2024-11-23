@@ -80,7 +80,7 @@
 
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now </button>
+                                    <a href="{{ route('client.index') }}"><button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now </button></a>
 
                                 </div>
 

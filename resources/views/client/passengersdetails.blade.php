@@ -137,13 +137,11 @@
 
     <form id="passengerForm3" method="POST" action="{{  route('client.passengersdetails.store') }}">
         @csrf
-
+        <input type="hidden" name="schedule_flights" value=" {{ $scheduleflightId }}">
         <!-- Passenger 1 -->
         <div class="passenger-section3">
             <h3>Passenger</h3>
             <div class="row3">
-                <input type="hidden" name="schedule_flights">
-
                 <div class="form-group3">
                     <label for="firstName1">First Name</label>
                     <input type="text" id="firstName1" name="fname" placeholder="First Name" required>

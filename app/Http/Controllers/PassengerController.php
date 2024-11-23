@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 // use App\Models\PassengerDetails;
 
+use App\Http\Requests\PassengerRequest;
 use App\Models\PassengerDetails;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,13 @@ class PassengerController extends Controller
         $passenger->npassengers = $request->npassengers;
         $saved = $passenger->save();
         if($saved){
-            return redirect()->route('client.stripe')->with('message', 'category successfully added');
+            if($request->schedule_flights > 0){
+                return redirect()->route('client.stripepayment', $passenger->id)->with('message', 'category successfully added');
+                
+            }else{
+                return redirect()->back();
+            }
+
         }
         else{
             return redirect()->back()->with('message', 'category could not be add');

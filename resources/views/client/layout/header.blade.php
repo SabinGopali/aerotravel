@@ -29,7 +29,7 @@
                                 <nav>
                                     <ul id="navigation">                                                                                                                                     
                                         <li><a href="{{ route('client.index') }}">Home</a></li>
-                                        <li><a href="#">My Flight</a></li>
+                                        {{-- <li><a href="#">My Flight</a></li> --}}
                                         <li><a href="#trip">Trip Plans</a></li>
                                         <li><a href="{{ route('client.feedbackDetails') }}">Feedback</a> </li>
                                         

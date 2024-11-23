@@ -6,11 +6,11 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f0f4f8;
             margin: 0;
-            padding: 20px;
+            padding: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 40vh;
         }
 
         .flight-container2 {
@@ -156,22 +156,22 @@
 
                     <!-- Fare Options -->
                     <div class="fare-options2">
-                    @if($flight->sc_economy && $flight->nos_economy)
+                    @if($flight->class)
                             <div class="fare-box2">
-                                <h4>Economy</h4>
-                                    <p>RS {{ number_format($flight->sc_economy) }}</p>
-                                    <p>Seats Available: {{ $flight->nos_economy }}</p>
-                                    <a href="{{ route('client.passengersDetails') }}"><button>Select</button></a>
+                                <h4>{{ ($flight->class) }}</h4>
+                                    <p>RS {{ number_format($flight->class_cost) }}</p>
+                                    {{-- <p>Seats Available: {{ $flight->nos_economy }}</p> --}}
+                                    <a href="{{ route('client.passengersDetails', ['id' => $flight->id]) }}"><button>Select</button></a>
                             </div>
                     @endif
-                    @if($flight->sc_business && $flight->nos_business)
+                    {{-- @if($flight->sc_business && $flight->nos_business)
                         <div class="fare-box2">
                             <h4>Business</h4>
-                            <p>RS {{ number_format($flight->sc_business) }}</p>
-                            <p>Seats Available: {{ $flight->nos_business }}</p>
-                            <a href="{{ route('client.passengersDetails') }}"><button>Select</button></a>
+                            <p>RS {{ number_format($flight->class_cost) }}</p> --}}
+                            {{-- <p>Seats Available: {{ $flight->nos_business }}</p> --}}
+                            {{-- <a href="{{ route('client.passengersDetails') }}"><button>Select</button></a>
                         </div>
-                    @endif    
+                    @endif     --}}
                     </div>
                 </div>
             </div>

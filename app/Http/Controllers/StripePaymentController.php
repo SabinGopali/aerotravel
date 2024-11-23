@@ -12,12 +12,14 @@ class StripePaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function stripe()
+    public function stripe($id)
     {
-        $passenger = PassengerDetails::all();
-        return view('client.stripe', compact('passenger'));
+        // $passenger = PassengerDetails::all();
+        $schedule_flights_id = $id;
+        if($id > 0){
+            return view('client.stripe', compact('schedule_flights_id'));
+        }
     }
-    
     /**
      * success response method.
      *
@@ -25,6 +27,7 @@ class StripePaymentController extends Controller
      */
     public function stripePost(Request $request)
     {
+        dd('hello', $request->all());
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
     
         Stripe\Charge::create ([

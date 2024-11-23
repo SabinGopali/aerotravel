@@ -18,41 +18,42 @@ class ClientControlller extends Controller
     }
 
     public function flightlist(Request $request)
-{
-    // Retrieve the search parameters
-    $from = $request->input('from');
-    $to = $request->input('to');
-    $departure = $request->input('departure');
+    {
+        // Retrieve the search parameters
+        $from = $request->input('from');
+        $to = $request->input('to');
+        $departure = $request->input('departure');
 
-    // Query the database for flights based on search criteria
-    $flights = ScheduleFlight::query();
+        // Query the database for flights based on search criteria
+        $flights = ScheduleFlight::query();
 
-    if ($from) {
-        $flights->where('select_source', $from);
+        if ($from) {
+            $flights->where('select_source', $from);
+        }
+
+        if ($to) {
+            $flights->where('select_destination', $to);
+        }
+
+        if ($departure) {
+            $flights->whereDate('depart_date_time', $departure);
+        }
+
+        // Retrieve the flights or an empty collection if no results found
+        $recommendedFlights = $flights->get();
+
+        // Ensure recommendedFlights is an empty array if null
+        if ($recommendedFlights === null) {
+            $recommendedFlights = [];
+        }
+        // Return the view with the recommended flights
+        return view('client.flightlist', ['recommendedFlights' => $recommendedFlights]);
     }
 
-    if ($to) {
-        $flights->where('select_destination', $to);
-    }
 
-    if ($departure) {
-        $flights->whereDate('depart_date_time', $departure);
-    }
-
-    // Retrieve the flights or an empty collection if no results found
-    $recommendedFlights = $flights->get();
-
-    // Ensure recommendedFlights is an empty array if null
-    if ($recommendedFlights === null) {
-        $recommendedFlights = [];
-    }
-    // Return the view with the recommended flights
-    return view('client.flightlist', ['recommendedFlights' => $recommendedFlights]);
-}
-
-
-    public function passengersDetails(){
-        return view('client.passengersdetails');
+    public function passengersDetails($id){
+        $scheduleflight = ScheduleFlight::findorfail($id);
+        return view('client.passengersdetails', ['scheduleflightId' => $scheduleflight->id]);
     }
 
     public function previewDetails(){

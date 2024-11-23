@@ -3,9 +3,11 @@
     <style>
         .tripdetails {
             font-family: Arial, sans-serif;
-            background-color: #f0f4f8;
+            /* background-color: #f0f4f8; */
             margin: 0;
             padding: 20px;
+            /* display: flex; */
+            margin-left: 130px;
         }
 
         .container {
@@ -81,6 +83,7 @@
             border-radius: 4px;
             font-size: 16px;
             cursor: pointer;
+            margin-bottom: 15px;
             transition: background-color 0.3s;
         }
 
@@ -91,7 +94,7 @@
 <div class="tripdetails">
     <div class="container">
         <h1>Trip Details</h1>
-        <button class="btn-schedule"><a href="{{ route('admin.travellerdetails.create') }}">Add Trip Details</button></a>
+        <button class="btn-schedule"><a href="{{ route('admin.travellerdetails.create') }}" style="text-decoration: none; color: white; ">Add Trip Details</button></a>
         <table>
             <thead>
                 <tr>

@@ -29,7 +29,7 @@ Route::get('/', [ClientControlller::class, 'index'])->name('client.index');
 // Authenticated routes (only accessible by logged-in users)
 Route::middleware(['auth'])->group(function () {
     Route::get('/flight_list', [ClientControlller::class, 'flightlist'])->name('client.flightlist');
-    Route::get('/passengers_details', [ClientControlller::class, 'passengersDetails'])->name('client.passengersDetails');
+    Route::get('/passengers_details/{id}', [ClientControlller::class, 'passengersDetails'])->name('client.passengersDetails');
     Route::get('/preview_details', [ClientControlller::class, 'previewDetails'])->name('client.previewDetails');
     Route::get('/feedback_details', [ClientControlller::class, 'feedbackDetails'])->name('client.feedbackDetails');
     Route::post('/feedbackDetailsStore', [ClientControlller::class, 'store'])->name('client.feedbackDetails.store');
@@ -118,7 +118,10 @@ Route::get('/travellerdetails-delete/{id}', [TravellerDetailsController::class, 
 //     Route::post('stripetraveller', 'stripePost')->name('stripetraveller.post'); 
 // });
 
-
+Route::group(['prefix' => '/stripepayment'], function () {
+    Route::get('/stripepayment/{id}', [StripePaymentController::class, 'stripe'])->name('client.stripepayment');
+    Route::post('/stripepaymentPost', [StripePaymentController::class, 'stripePost'])->name('stripepayment.post');
+});
 Route::group(['prefix' => '/stripetraveller'], function () {
     Route::get('/stripe/{id}', [StripeTravellerController::class, 'stripe'])->name('client.stripetraveller');
     Route::post('/stripePost', [StripeTravellerController::class, 'stripePost'])->name('stripetraveller.post');

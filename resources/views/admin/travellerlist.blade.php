@@ -95,7 +95,7 @@ th {
 <div class="passengers">
 
     <div class="data-section">
-        <h2 class="heading-title">Passengers</h2>
+        <h2 class="heading-title">Travellers</h2>
 
         <div class="search-bar">
             {{-- <input class="search-input" type="text" placeholder="You can search here">

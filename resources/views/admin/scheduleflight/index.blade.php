@@ -9,6 +9,7 @@
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+            margin-top: 50px;
         }
 
         /* Header with the schedule button */
@@ -80,7 +81,7 @@
         <div class="falcon-flight-header">
             <div>
                 <button class="flight-plan-button">
-                    <a href="{{ route('admin.scheduleflight.create') }}">✈ Schedule Flight</a>
+                    <a href="{{ route('admin.scheduleflight.create') }}" style="text-decoration: none; color: white; ">✈ Schedule Flight</a>
                 </button>
             </div>
         </div>

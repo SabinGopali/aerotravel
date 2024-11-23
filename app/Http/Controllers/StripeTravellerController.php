@@ -65,14 +65,14 @@ class StripeTravellerController extends Controller
             // Create the Stripe charge
             Stripe\Charge::create([
                 "amount" => $totalAmount * 100, // Convert to cents
-                "currency" => "usd",
+                "currency" => "NPR",
                 "source" => $request->stripeToken,
                 "description" => "Payment for {$npassengers} passengers"
             ]);
 
             // Flash success message
             Session::flash('success', 'Payment successful!');
-            return back();
+            return redirect()->route('client.index');
         } catch (\Exception $e) {
             // Handle errors (e.g., Stripe issues, invalid input)
             return back()->with('error', $e->getMessage());

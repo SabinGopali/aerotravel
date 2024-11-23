@@ -9,5 +9,5 @@ class PassengerDetails extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['fname', 'lname', 'contact', 'dob','npassengers'];
+    protected $fillable = ['schedule_flights_id', 'fname', 'lname', 'contact', 'dob','npassengers'];
 }
