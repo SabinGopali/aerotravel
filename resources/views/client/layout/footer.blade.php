@@ -10,9 +10,9 @@
                            <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
                          </div>
                          <div class="footer-social footer-social2">
-                             <a href="#"><i class="fab fa-facebook-f"></i></a>
-                             <a href="#"><i class="fab fa-instagram"></i></a>
-                             <a href="#"><i class="fab fa-whatsapp"></i></a>
+                             <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+                             <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                             <a href="https://www.whatsapp.com"><i class="fab fa-whatsapp"></i></a>
                              <!-- <a href="#"><i class="fab fa-behance"></i></a> -->
                          </div>
                          <div class="footer-pera">

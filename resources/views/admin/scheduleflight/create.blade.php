@@ -122,14 +122,14 @@
             <div class="form-check form-check-success">
                 <label class="form-check-label">
                     <input type="radio" class="form-check-input" name="class"
-                        id="optionsRadios1" value="economy" checked="">
+                        id="optionsRadios1" value="Economy" checked="">
                     Economy
                     <i class="input-helper"></i></label>
             </div>
             <div class="form-check form-check-danger">
                 <label class="form-check-label">
                     <input type="radio" class="form-check-input" name="class"
-                        id="optionsRadios2" value="business">
+                        id="optionsRadios2" value="Business">
                     Business
                     <i class="input-helper"></i></label>
             </div>

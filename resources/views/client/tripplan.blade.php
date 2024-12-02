@@ -202,7 +202,7 @@
 
         <!-- Book Now Button -->
         <div class="booking-area"> <!-- renamed from book-now -->
-            <button class="cta-button"><a href="{{ route('client.travellerdetails', ['id' => $travellerdetails->id] ) }}">Book Now</button></a> <!-- renamed from book-now button -->
+            <button class="cta-button"><a href="{{ route('client.travellerdetails', ['id' => $travellerdetails->id] ) }}" style="text-decoration: none; color: white; ">Book Now</button></a> <!-- renamed from book-now button -->
         </div>
     </div>
 </div>

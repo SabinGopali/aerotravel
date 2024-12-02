@@ -47,7 +47,7 @@
                                 <span class="btn btn1 d-none d-lg-block ">{{Auth::user()->name}}</span>
                                 <span>
                                     <a href="{{route('logout')}}" onclick="event.preventDefault(); 
-                                            document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                            document.getElementById('logout-form').submit();" style="margin-left:150px;">{{ __('Logout') }}</a>
                                     <form id="logout-form" action="{{route('logout')}}" method="POST" class="d-none">
                                         @csrf
                                     </form>

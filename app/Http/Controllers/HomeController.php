@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\feedback;
 use Illuminate\Http\Request;
 use App\Models\PassengerDetails;
+use App\Models\ScheduleFlight;
 use App\Models\Tdetail;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -30,7 +32,12 @@ class HomeController extends Controller
     }
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $user = User::where('role_id', 1)->get();
+        $flights = ScheduleFlight::all();
+        $passenger = PassengerDetails::all();
+        $feedback = feedback::all();
+        $traveller = Tdetail::all();
+        return view('admin.dashboard', compact('user', 'flights', 'passenger', 'feedback', 'traveller'));
     }
 
     public function adminflightdetail()

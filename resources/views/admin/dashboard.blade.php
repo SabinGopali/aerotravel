@@ -167,28 +167,30 @@
       </div> --}}
       <div class="card">
         <p>Available Flights</p>
-        <h2>8</h2>
+        <h2>{{ $flights->count() }}</h2>
         {{-- <p>Flight No: 108 lastly added</p> --}}
       </div>
       <div class="card">
-        <p>Total Bookings</p>
-        <h2>38</h2>
+        <p>Users</p>
+        <h2>{{ $user->count() }}</h2>
         {{-- <p>From 19 Registrations</p> --}}
       </div>
       <div class="card">
-        <p>Total Earnings</p>
-        <h2>RS 234962</h2>
+        <p>Total Passengers</p>
+        <h2>{{ $passenger->count() }}</h2>
         {{-- <p>Today's Earnings INR 16004</p> --}}
       </div>
     </div>
 
     <div class="charts">
       <div class="chart">
-        <h3>Flights Status</h3>
+        <p>Feedback</p>
+        <h2>{{ $feedback->count() }}</h2>
         <!-- Bar chart content can go here -->
       </div>
       <div class="chart">
-        <h3>Number of Flights </h3>
+        <p>Traveller</p>
+        <h2>{{ $traveller->count() }}</h2>
         <!-- Pie chart content can go here -->
       </div>
     </div>
